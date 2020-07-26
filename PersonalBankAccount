@@ -1,0 +1,36 @@
+class BankAccount(object):
+  balance = 0
+  def __init__(self, name):
+    self.name = name
+  def __repr__(self):
+    return "This bank account belongs to %s. The current account balance is NGN%.2f" % (self.name, self.balance)
+  def show_balance(self):
+    print "%s, your account balance is NGN%.2f" % (self.name, self.balance)
+  def deposit(self, amount):
+    self.amount = amount
+    if amount <= 0:
+      print "Invalid transaction!"
+      return
+    else:
+      print "NGN%.2f has been deposited into your account!" % (self.amount)
+      self.balance += amount
+      self.show_balance()
+  def withdraw(self, amount):
+    self.amount = amount
+    if amount > self.balance:
+      print "Sorry! Insufficient fund."
+      return
+    else:
+      print "Successful! You have withdrew NGN%.2f" % (self.amount)
+      self.balance -= amount
+      self.show_balance()
+
+my_account = BankAccount("Clement")
+
+print my_account
+print
+my_account.show_balance()
+my_account.deposit(2000)
+my_account.withdraw(1000)
+print
+print my_account
